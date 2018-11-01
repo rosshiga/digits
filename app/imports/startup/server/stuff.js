@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/stuff.js';
+import { Stuffs,People } from '../../api/stuff/stuff.js';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
@@ -24,6 +24,9 @@ Meteor.publish('Stuff', function publish() {
   }
   return this.ready();
 });
+
+Meteor.publish( 'contact', () => People.find())
+
 
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('StuffAdmin', function publish() {
